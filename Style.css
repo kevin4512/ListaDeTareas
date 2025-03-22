@@ -1,0 +1,61 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: #f8f9fa;
+}
+
+main {
+    display: flex;
+    height: 100vh;
+    padding: 2rem;
+}
+
+.barra-lateral {
+    display: flex;
+    flex-direction: column;
+    background-color: #0e0e18;
+    color: white;
+    width: 20rem;
+    padding: 1rem;
+    
+    border-radius: 10px;
+}
+
+.lista-tareas {
+    flex: 1;
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-left: 2rem;
+}
+
+.lista-tareas ul {
+    list-style: none;
+}
+
+.lista-tareas li {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.agregar-tarea {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    background: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
