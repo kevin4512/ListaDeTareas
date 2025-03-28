@@ -4,14 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Tareas con Calendario Completo</title>
+    
+    <!-- Estilos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="./src/css/style.css">
+
+    <!-- Scripts de Flatpickr -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
+
+    <!-- Script principal -->
+    <script src="./src/js/script.js" defer></script>
 </head>
 <body>
     <main>
         <section class="barra-lateral">
-             <div class="titulo-app">
+            <div class="titulo-app">
                 <h1><i class="fas fa-check-circle"></i> Todo-list</h1>
             </div>
             <div class="contenedor-calendario">
@@ -20,7 +29,7 @@
 
             <div class="nueva-lista">
                 <h2>Nueva Lista de Tareas</h2>
-                <button class="agregar-tarea">
+                <button class="agregar-tarea" id="btnAgregarTarea">
                     <i class="fas fa-plus"></i> Agregar Tarea
                 </button>
             </div>
@@ -49,18 +58,17 @@
         </section>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
-    <script>
-        flatpickr("#miCalendario", {
-            inline: true,
-            static: true,
-            locale: "es",
-            showMonths: 1,
-            monthSelectorType: 'static',
-            prevArrow: '<i class="fas fa-chevron-left"></i>',
-            nextArrow: '<i class="fas fa-chevron-right"></i>'
-        });
-    </script>
+    <!-- Modal para agregar tarea -->
+    <section id="modalAgregarTarea" class="modal">
+        <section class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Agregar Nueva Tarea</h2>
+            <label for="nombreTarea">Nombre de la Tarea:</label>
+            <input type="text" id="nombreTarea" name="nombreTarea">
+            <label for="fechaTarea">Fecha de la Tarea:</label>
+            <input type="text" id="fechaTarea" name="fechaTarea" class="flatpickr">
+            <button id="guardarTarea">Guardar Tarea</button>
+        </section>
+    </section>
 </body>
 </html>

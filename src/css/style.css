@@ -206,3 +206,60 @@ main {
 .titulo-app i {
     color: #4a6fa5;
 }
+
+/*CSS para ventana emergente(modal)*/
+
+/* Estilos para el modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0; 
+    top: 0; 
+    width: 100%; 
+    height: 100%; 
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; 
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+#guardarTarea {
+    background-color: #6c757d; /* Gris elegante */
+    color: #fff; /* Texto blanco */
+    padding: 4px 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#guardarTarea:hover {
+    background-color: #5a6268; /* Gris más oscuro al pasar el mouse */
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+#guardarTarea:active {
+    background-color: #4e555b; /* Más oscuro al hacer clic */
+    transform: scale(0.98);
+}
