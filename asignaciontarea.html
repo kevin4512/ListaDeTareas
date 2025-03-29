@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tareas con Calendario Completo</title>
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="./src/css/asignacion.css">
+
+    <!-- Scripts de Flatpickr -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
+
+    <!-- Script principal -->
+    <script src="./src/js/script.js" defer></script>
+</head>
+<body>
+    <main>
+        <section class="barra-lateral">
+            <div class="titulo-app">
+                <h1><i class="fas fa-check-circle"></i> Todo-list</h1>
+            </div>
+            <div class="contenedor-calendario">
+                <div class="calendario" id="miCalendario"></div>
+            </div>
+        </section>
+
+        <section class="lista-nueva">
+            <div class="nueva-lista-contenedor">
+                <h2>Crear Nueva Lista</h2>
+                <form id="form-nueva-lista">
+                    <label for="nombre-lista">Nombre de la Lista:</label>
+                    <input type="text" id="nombre-lista" name="nombre-lista" placeholder="Ej: Compras, Tareas, Proyectos..." required>
+                    
+                    <label for="descripcion-lista">Descripción:</label>
+                    <textarea id="descripcion-lista" name="descripcion-lista" placeholder="Describe la lista..." required></textarea>
+                    
+                    <button type="submit" class="agregar-tarea-nueva"><i class="fas fa-plus"></i> Crear Lista</button>
+                </form>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

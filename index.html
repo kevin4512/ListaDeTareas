@@ -3,10 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Tareas con Calendario</title>
+    <title>Lista de Tareas con Calendario Completo</title>
+    
+    <!-- Estilos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link rel="stylesheet" href="src/css/styles.css">
+    <link rel="stylesheet" href="./src/css/style.css">
+
+    <!-- Scripts de Flatpickr -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
+
+    <!-- Script principal -->
+    <script src="./src/js/script.js" defer></script>
 </head>
 <body>
     <main>
@@ -15,27 +24,40 @@
                 <h1><i class="fas fa-check-circle"></i> Todo-list</h1>
             </div>
             <div class="contenedor-calendario">
-                <input type="text" id="miCalendario" class="calendario" placeholder="Selecciona una fecha">
+                <div class="calendario" id="miCalendario"></div>
             </div>
+
             <div class="nueva-lista">
                 <h2>Nueva Lista de Tareas</h2>
-                <button id="agregarTarea" class="btnAgregar">
+                <button class="agregar-tarea" id="btnAgregarTarea">
                     <i class="fas fa-plus"></i> Agregar Tarea
                 </button>
-                <ul id="listaNuevasTareas" class="tareas"></ul>
             </div>
         </section>
-        <section class="lista-item">
+
+        <section class="lista-tareas">
             <h1 class="titulo-principal">Mis Tareas</h1>
-            <button id="agregarItem" class="btnAgregar">
-                <i class="fas fa-plus"></i> Agregar item
-            </button>
-            <ul id="listaItems" class="tareas"></ul>
+            <ul class="tareas">
+                <li class="tarea">
+                    <input type="checkbox" id="tarea1">
+                    <label for="tarea1" class="texto-tarea">Universidad</label>
+                    <div class="acciones-tarea">
+                        <button class="editar"><i class="fas fa-edit"></i></button>
+                        <button class="eliminar"><i class="fas fa-trash"></i></button>
+                    </div>
+                </li>
+                <li class="tarea">
+                    <input type="checkbox" id="tarea2">
+                    <label for="tarea2" class="texto-tarea">Mercado de la casa</label>
+                    <div class="acciones-tarea">
+                        <button class="editar"><i class="fas fa-edit"></i></button>
+                        <button class="eliminar"><i class="fas fa-trash"></i></button>
+                    </div>
+                </li>
+            </ul>
         </section>
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
-    <script src="src/js/crudListaTareas.js"></script>
-  
+
+    
 </body>
 </html>

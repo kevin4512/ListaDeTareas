@@ -1,0 +1,174 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+main {
+    display: flex;
+    min-height: 100vh;
+    padding: 2rem;
+    gap: 1rem;
+}
+
+.barra-lateral {
+    width: 350px; 
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+}
+
+.contenedor-calendario {
+    width: 100%;
+    margin-bottom: 2rem;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.flatpickr-calendar {
+    width: 100% ;
+    max-width: 300px ;
+    margin: 0 auto ;
+    box-shadow: none;
+    border: 1px solid #e1e4e8;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.flatpickr-month {
+    height: 40px !important;
+    margin-bottom: 0 !important;
+    background-color: #4a6fa5 !important;
+    color: white !important;
+    border-radius: 8px 8px 0 0 !important;
+}
+
+.flatpickr-current-month {
+    font-size: 1.1rem ;
+    padding-top: 8px ;
+}
+
+.flatpickr-weekdays {
+    background-color: #f8f9fa ;
+    border-bottom: 1px solid #e1e4e8 ;
+}
+
+.flatpickr-weekday {
+    font-weight: 500 ;
+    color: #4a6fa5 ;
+}
+
+.flatpickr-day {
+    height: 32px ;
+    line-height: 32px ;
+    margin: 2px ;
+    border-radius: 4px;
+}
+
+.flatpickr-day.today {
+    border: 1px solid #4a6fa5 ;
+}
+
+.nueva-lista {
+    margin-top: auto;
+    text-align: center;
+}
+
+.nueva-lista h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.agregar-tarea {
+    width: 100%;
+    background-color: #4a6fa5;
+    color: white;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.agregar-tarea:hover {
+    background-color: #3a5a80;
+    transform: translateY(-2px);
+}
+
+/* Sección nueva lista */
+.lista-nueva {
+    width: 100%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.nueva-lista-contenedor {
+    max-width: 700px;
+    margin: auto;
+}
+
+.nueva-lista-contenedor h2 {
+    text-align: center;
+    color: #2c3e50;
+}
+
+#form-nueva-lista {
+    display: flex;
+    flex-direction: column;
+}
+
+#form-nueva-lista label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+#form-nueva-lista input,
+#form-nueva-lista textarea {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.agregar-tarea-nueva {
+    margin-top: 15px;
+    background-color: #4a6fa5;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.agregar-tarea-nueva i {
+    margin-right: 5px;
+}
+
+.agregar-tarea-nueva:hover {
+    background-color:  #4a6fa5;
+}
+
