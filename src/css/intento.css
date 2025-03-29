@@ -236,8 +236,143 @@ main {
 
 .tarea-item {
     list-style: none; 
-    margin: 5px 0;
+    margin: 10px 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+}
+
+.item-tarea {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.item-tarea:hover {
+    background-color: #f8f9fa;
+    transform: scale(1.02);
+}
+
+.item-tarea .texto-tarea {
+    flex: 1;
+    font-size: 1rem;
+    color: #2c3e50;
+    margin-left: 0.5rem;
+}
+
+.item-tarea .acciones-tarea {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.item-tarea input[type="checkbox"] {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.item-tarea.completada {
+    background-color: #d4edda;
+    text-decoration: line-through;
+    color: #155724;
+}
+
+
+/* Estilos para los options dentro de select */
+select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #fff;
+    color: #333;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+select:hover {
+    border-color: #4a6fa5;
+}
+
+option {
+    padding: 0.5rem;
+    font-size: 1rem;
+    color: #2c3e50;
+    background: white;
+}
+
+option:checked {
+    background: #4a6fa5;
+    color: white;
+}
+
+/* Estilos para los botones eliminar-item y editar-item */
+/* Ajuste para reducir el tamaño del select */
+select {
+    width: 50%;
+    padding: 0.3rem 0.5rem;
+    font-size: 0.85rem;
+    border-radius: 4px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    
+}
+
+select:hover {
+    border-color: #4a6fa5;
+}
+
+/* Separación entre los botones */
+.acciones-tarea {
+    display: flex;
+    gap: 1rem; /* Espaciado entre los botones */
+    justify-content: center; /* Alinear a la izquierda */
+}
+
+/* Estilos para los botones eliminar-item y editar-item */
+.eliminar-item, .editar-item {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.eliminar-item {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.eliminar-item:hover {
+    background-color: #c0392b;
+    transform: scale(1.05);
+}
+
+.editar-item {
+    background-color: #4a6fa5;
+    color: white;
+}
+
+.editar-item:hover {
+    background-color: #36527a;
+    transform: scale(1.05);
+}
+
+/* Íconos dentro de los botones */
+.eliminar-item i, .editar-item i {
+    font-size: 1rem;
 }

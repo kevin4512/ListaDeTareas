@@ -48,6 +48,13 @@ document.addEventListener("DOMContentLoaded", () => {
             const accionesDiv = document.createElement("div");
             accionesDiv.classList.add("acciones-tarea");
 
+            const btnEditar = document.createElement("button");
+            btnEditar.innerHTML = '<i class= "fas fa-edit"></i>';
+            btnEditar.classList.add("editar");
+            btnEditar.addEventListener("click", (e) => {
+                e.stopPropagation();
+                editarTarea(index);
+            });
             const btnEliminar = document.createElement("button");
             btnEliminar.innerHTML = '<i class="fas fa-trash"></i>';
             btnEliminar.classList.add("eliminar");
@@ -56,11 +63,22 @@ document.addEventListener("DOMContentLoaded", () => {
                 eliminarTarea(index);
             });
 
+            accionesDiv.appendChild(btnEditar);
             accionesDiv.appendChild(btnEliminar);
             li.appendChild(tareaBtn);
             li.appendChild(accionesDiv);
             listaTareas.appendChild(li);
         });
+    }
+
+    function editarTarea(index) {
+        const tareas = obtenerTareas();
+        const nuevoTexto = prompt("Editar tarea:", tareas[index].texto);
+        if (nuevoTexto && nuevoTexto.trim() !== "") {
+            tareas[index].texto = nuevoTexto;
+            guardarTareas(tareas);
+            cargarTareas();
+        }
     }
 
     function seleccionarTarea(index) {
@@ -121,7 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const tareas = obtenerTareas();
         tareas[tareaSeleccionada].items.push({
             nombre: nombreItem,
-            estado: "Sin empezar"
+            estado: "value1" // El estado inicial de cada ítem
         });
         guardarTareas(tareas);
         cargarItems();
@@ -144,7 +162,21 @@ document.addEventListener("DOMContentLoaded", () => {
             li.classList.add("item-tarea");
 
             const span = document.createElement("span");
-            span.textContent = `${item.nombre} - ${item.estado}`;
+            span.textContent = `${item.nombre}`;
+
+            const select = document.createElement("select");
+            select.innerHTML = `
+                <option value="value1" ${item.estado === 'value1' ? 'selected' : ''}>Sin empezar</option>
+                <option value="value2" ${item.estado === 'value2' ? 'selected' : ''}>En proceso</option>
+                <option value="value3" ${item.estado === 'value3' ? 'selected' : ''}>Completado</option>
+            `;
+            
+            select.addEventListener("change", (e) => {
+                const nuevoEstado = e.target.value;
+                const tareas = obtenerTareas();
+                tareas[tareaSeleccionada].items[index].estado = nuevoEstado;
+                guardarTareas(tareas);
+            });
 
             const btnEditar = document.createElement("button");
             btnEditar.textContent = "Editar";
@@ -157,6 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
             btnEliminar.addEventListener("click", () => eliminarItem(index));
 
             li.appendChild(span);
+            li.appendChild(select);
             li.appendChild(btnEditar);
             li.appendChild(btnEliminar);
             listaItems.appendChild(li);
@@ -170,17 +203,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const nuevoNombre = prompt("Editar nombre del ítem:", items[index].nombre);
         if (nuevoNombre === null) return; // Si el usuario cancela
 
-        const nuevoEstado = prompt("Editar estado (Completa, En proceso, Sin empezar):", items[index].estado);
-        if (nuevoEstado === null) return;
-
-        const estadoValido = ["Completa", "En proceso", "Sin empezar"];
-        if (nuevoNombre && nuevoNombre.trim() !== "" && estadoValido.includes(nuevoEstado.trim())) {
+        if (nuevoNombre && nuevoNombre.trim() !== "") {
             items[index].nombre = nuevoNombre.trim();
-            items[index].estado = nuevoEstado.trim();
             guardarTareas(tareas);
             cargarItems();
-        } else {
-            alert("Estado inválido. Usa: Completa, En proceso, Sin empezar.");
         }
     }
 
