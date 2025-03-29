@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const tituloMisTareas = document.getElementById("tituloMisTareas");
     const listaItems = document.getElementById("listaItems");
     const agregarItemBtn = document.getElementById("agregarItem");
+
     let tareaSeleccionada = null;
 
     if (calendario) {
@@ -33,36 +34,45 @@ document.addEventListener("DOMContentLoaded", () => {
 
         tareas.forEach((tarea, index) => {
             const li = document.createElement("li");
-            li.classList.add("tarea");
-            li.innerHTML = `
-                <span class="texto-tarea">${tarea.texto} - ${tarea.fecha}</span>
-                <div class="acciones-tarea">
-                    <button class="editar"><i class="fas fa-edit"></i></button>
-                    <button class="eliminar"><i class="fas fa-trash"></i></button>
-                </div>
-            `;
+            li.classList.add("tarea-item");
 
-            li.addEventListener("click", () => seleccionarTarea(tarea.texto));
-            const btnEditar = li.querySelector(".editar");
-            const btnEliminar = li.querySelector(".eliminar");
+            const tareaBtn = document.createElement("button");
+            tareaBtn.classList.add("tarea-boton");
+            tareaBtn.textContent = `${tarea.texto} - ${tarea.fecha}`;
 
-            if (btnEditar) btnEditar.addEventListener("click", (e) => {
+            tareaBtn.addEventListener("click", () => seleccionarTarea(index));
+
+            const accionesDiv = document.createElement("div");
+            accionesDiv.classList.add("acciones-tarea");
+
+            const btnEditar = document.createElement("button");
+            btnEditar.innerHTML = '<i class="fas fa-edit"></i>';
+            btnEditar.classList.add("editar");
+            btnEditar.addEventListener("click", (e) => {
                 e.stopPropagation();
                 editarTarea(index);
             });
 
-            if (btnEliminar) btnEliminar.addEventListener("click", (e) => {
+            const btnEliminar = document.createElement("button");
+            btnEliminar.innerHTML = '<i class="fas fa-trash"></i>';
+            btnEliminar.classList.add("eliminar");
+            btnEliminar.addEventListener("click", (e) => {
                 e.stopPropagation();
                 eliminarTarea(index);
             });
 
+            accionesDiv.appendChild(btnEditar);
+            accionesDiv.appendChild(btnEliminar);
+            li.appendChild(tareaBtn);
+            li.appendChild(accionesDiv);
             listaTareas.appendChild(li);
         });
     }
 
-    function seleccionarTarea(nombreTarea) {
-        tareaSeleccionada = encodeURIComponent(nombreTarea);
-        tituloMisTareas.textContent = nombreTarea;
+    function seleccionarTarea(index) {
+        const tareas = obtenerTareas();
+        tareaSeleccionada = index;
+        tituloMisTareas.textContent = tareas[index].texto;
         cargarItems();
     }
 
@@ -80,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const tareas = obtenerTareas();
-        tareas.push({ texto, fecha });
+        tareas.push({ texto, fecha, items: [] }); // Agregar un array vacío de items
         guardarTareas(tareas);
         cargarTareas();
     }
@@ -100,20 +110,15 @@ document.addEventListener("DOMContentLoaded", () => {
             const tareas = obtenerTareas();
             tareas.splice(index, 1);
             guardarTareas(tareas);
+            tareaSeleccionada = null;
+            tituloMisTareas.textContent = "Mis Tareas";
+            listaItems.innerHTML = ""; // Limpiar los ítems cuando se borra una tarea
             cargarTareas();
         }
     }
 
-    function obtenerItems() {
-        return JSON.parse(localStorage.getItem(tareaSeleccionada)) || [];
-    }
-
-    function guardarItems(items) {
-        localStorage.setItem(tareaSeleccionada, JSON.stringify(items));
-    }
-
     function agregarItem() {
-        if (!tareaSeleccionada) {
+        if (tareaSeleccionada === null) {
             alert("Selecciona una tarea primero.");
             return;
         }
@@ -124,18 +129,24 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        const items = obtenerItems();
-        items.push({ nombre: nombreItem, estado: "Sin empezar" });
-        guardarItems(items);
+        const tareas = obtenerTareas();
+        tareas[tareaSeleccionada].items.push({ nombre: nombreItem, estado: "Sin empezar" });
+        guardarTareas(tareas);
         cargarItems();
     }
 
     function cargarItems() {
         listaItems.innerHTML = "";
-        const items = obtenerItems();
+        if (tareaSeleccionada === null) {
+            console.warn("⚠️ No hay tarea seleccionada.");
+            return;
+        }
+
+        const tareas = obtenerTareas();
+        const items = tareas[tareaSeleccionada].items || [];
 
         items.forEach((item, index) => {
-            const li = document.createElement("li");
+            let li = document.createElement("li");
             li.innerHTML = `
                 <span>${item.nombre} - ${item.estado}</span>
                 <button class="editar-item">Editar</button>
@@ -150,15 +161,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function editarItem(index) {
-        const items = obtenerItems();
+        const tareas = obtenerTareas();
+        const items = tareas[tareaSeleccionada].items;
+
         const nuevoNombre = prompt("Editar nombre del ítem:", items[index].nombre);
         const nuevoEstado = prompt("Editar estado (Completa, En proceso, Sin empezar):", items[index].estado);
 
-        const estadoValido = ["completa", "en proceso", "sin empezar"];
-        if (nuevoNombre && nuevoNombre.trim() !== "" && estadoValido.includes(nuevoEstado.trim().toLowerCase())) {
+        const estadoValido = ["Completa", "En proceso", "Sin empezar"];
+        if (nuevoNombre && nuevoNombre.trim() !== "" && estadoValido.includes(nuevoEstado.trim())) {
             items[index].nombre = nuevoNombre.trim();
             items[index].estado = nuevoEstado.trim();
-            guardarItems(items);
+            guardarTareas(tareas);
             cargarItems();
         } else {
             alert("Estado inválido. Usa: Completa, En proceso, Sin empezar.");
@@ -167,9 +180,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function eliminarItem(index) {
         if (confirm("¿Seguro que deseas eliminar este ítem?")) {
-            const items = obtenerItems();
-            items.splice(index, 1);
-            guardarItems(items);
+            const tareas = obtenerTareas();
+            tareas[tareaSeleccionada].items.splice(index, 1);
+            guardarTareas(tareas);
             cargarItems();
         }
     }
