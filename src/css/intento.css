@@ -117,6 +117,23 @@ main {
     justify-content: center;
     gap: 0.5rem;
 }
+.btnAgregar1 {
+    margin-top: 500px;
+    margin-left: 650px;
+    width: 30%;
+    background-color: #4a6fa5;
+    color: white;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
 
 .agregar-tarea:hover {
     background-color: #3a5a80;
@@ -132,6 +149,7 @@ main {
 }
 
 .titulo-principal {
+    text-align: center;
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
     color: #2c3e50;
@@ -216,22 +234,28 @@ main {
     color: #4a6fa5;
 }
 
-#crearTarea {
-    position: fixed;
-    bottom: 50px;
-    right: 50px;
-    background-color: #357ABD;
+.tarea-boton {
+    background-color: #4CAF50; /* Verde */
     color: white;
     border: none;
-    padding: 12px 18px;
-    border-radius: 8px;
+    padding: 10px 15px;
+    text-align: left;
+    width: 100%;
     font-size: 16px;
     cursor: pointer;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background 0.3s;
+    margin-right: 10px;
 }
 
-#crearTarea:hover {
-    background-color: #285A8E;
-    transform: scale(1.05);
+.tarea-boton:hover {
+    background-color: #45a049;
+}
+
+
+.tarea-item {
+    list-style: none; 
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

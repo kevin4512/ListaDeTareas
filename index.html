@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Tareas con Calendario Completo</title>
+<<<<<<< HEAD
     
     <!-- Estilos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -16,11 +17,20 @@
 
     <!-- Script principal -->
     <script src="./src/js/script.js" defer></script>
+=======
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="src/css/styles.css">
+>>>>>>> 8107b18ce47803d6da2e8693df34421f3b7b9dc6
 </head>
 <body>
     <main>
         <section class="barra-lateral">
+<<<<<<< HEAD
             <div class="titulo-app">
+=======
+             <div class="titulo-app">
+>>>>>>> 8107b18ce47803d6da2e8693df34421f3b7b9dc6
                 <h1><i class="fas fa-check-circle"></i> Todo-list</h1>
             </div>
             <div class="contenedor-calendario">
@@ -29,7 +39,11 @@
 
             <div class="nueva-lista">
                 <h2>Nueva Lista de Tareas</h2>
+<<<<<<< HEAD
                 <button class="agregar-tarea" id="btnAgregarTarea">
+=======
+                <button class="agregar-tarea">
+>>>>>>> 8107b18ce47803d6da2e8693df34421f3b7b9dc6
                     <i class="fas fa-plus"></i> Agregar Tarea
                 </button>
             </div>
@@ -58,6 +72,27 @@
         </section>
     </main>
 
+<<<<<<< HEAD
     
 </body>
 </html>
+=======
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
+    <script>
+        flatpickr("#miCalendario", {
+            inline: true,
+            static: true,
+            locale: "es",
+            showMonths: 1,
+            monthSelectorType: 'static',
+            prevArrow: '<i class="fas fa-chevron-left"></i>',
+            nextArrow: '<i class="fas fa-chevron-right"></i>'
+        });
+    </script>
+  <button id="crearTarea">Crear Nueva Tarea</button>
+
+
+</body>
+</html>
+>>>>>>> 8107b18ce47803d6da2e8693df34421f3b7b9dc6

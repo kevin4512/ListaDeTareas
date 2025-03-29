@@ -1,0 +1,46 @@
+
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tareas con Calendario</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="src/css/intento.css">
+    <script src="./src/js/crudListaTareas.js"></script> 
+
+</head>
+<body>
+    <main>
+        <section class="barra-lateral">
+            <div class="titulo-app">
+                <h1><i class="fas fa-check-circle"></i> Todo-list</h1>
+            </div>
+            <div class="contenedor-calendario">
+                <input type="text" id="miCalendario" class="calendario" placeholder="Selecciona una fecha">
+            </div>
+            <div class="nueva-lista">
+                <h2>Nueva Lista de Tareas</h2>
+                <button id="agregarTarea" class="btnAgregar">
+                    <i class="fas fa-plus"></i> Agregar Tarea
+                </button>
+                <ul id="listaNuevasTareas" class="tareas"></ul>
+            </div>
+        </section>
+        <section class="lista-item">
+            <h1 class="titulo-principal">Mis Tareas</h1>
+            <button id="agregarItem" class="btnAgregar1">
+                <i class="fas fa-plus"></i> Agregar item
+            </button>
+            <ul id="listaMisTareas" class="tareas"></ul>
+        </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
+    <script src="src/js/crudListaTareas.js"></script>
+  
+</body>
+</html>

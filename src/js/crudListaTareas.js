@@ -199,4 +199,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Cargar tareas al inicio
     cargarTareas();
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> e096c51e5c28c782a668c30ee2cea02c381f6e69
