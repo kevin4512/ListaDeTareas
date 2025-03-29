@@ -118,9 +118,8 @@ main {
     gap: 0.5rem;
 }
 .btnAgregar1 {
-    margin-top: 500px;
-    margin-left: 650px;
     width: 30%;
+    max-width: 200px; /* Limita el ancho en pantallas grandes */
     background-color: #4a6fa5;
     color: white;
     padding: 0.75rem;
@@ -133,6 +132,7 @@ main {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    margin: 2rem auto; /* Centra el botón y le da un poco de espacio arriba */
 }
 
 .agregar-tarea:hover {

@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const listaItems = document.getElementById("listaMisTareas");
     const agregarItemBtn = document.getElementById("agregarItem");
 
-    let tareaSeleccionada = null;
 
     // Inicializar calendario
     if (calendario) {
